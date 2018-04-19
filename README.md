@@ -17,20 +17,20 @@ In this project, I use the tools we learned about in the lesson to identify lane
 The pipeline for finding lane lines involves the following steps:
 
 1. Detect edges in image:
- 1. Convert image to grayscale
- 2. Apply gaussian blur
- 3. Use canny edge detector
+    1. Convert image to grayscale
+    2. Apply gaussian blur
+    3. Use canny edge detector
 2. Find one laneline with positive slope and one laneline with negative slope:
- 1. Find line segments using Hough transform
- 2. For each line segment:
-  1. Calculate slope, and x coordinate corresponding to a fixed y coordinate 3/4 down from top  of image
-  2. If slope is outside certain thresholds, eliminate corresponding line segment from consideration
-  3. Classify line segments into slope positive or slope negative
- 3. For positive and negative slopes:
-  1. Find average of slopes
-  2. Find average of x coordinates corresponding to the fixed y coordinate 3/4 down from top of image
-  3. Use the above two (slope and point on line) to extrapolate the line to a single lane line with end points corresponding to two fixed y coordinates: one slightly below center of image and second at bottom of image
- 4. Draw the lane lines on original image
+    1. Find line segments using Hough transform
+    2. For each line segment:
+        1. Calculate slope, and x coordinate corresponding to a fixed y coordinate 3/4 down from top  of image
+        2. If slope is outside certain thresholds, eliminate corresponding line segment from consideration
+        3. Classify line segments into slope positive or slope negative
+    3. For positive and negative slopes:
+        1. Find average of slopes
+        2. Find average of x coordinates corresponding to the fixed y coordinate 3/4 down from top of image
+        3. Use the above two (slope and point on line) to extrapolate the line to a single lane line with end points corresponding to two fixed y coordinates: one slightly below center of image and second at bottom of image
+    4. Draw the lane lines on original image
 
 ### Strengths of the algorithm 
 * Because the dominant slope is found after eliminating
@@ -40,9 +40,6 @@ detects lanes that are stable and responsive to fast turns.
 * I have also used the image size as part of parameters wherever I believe the parameters are
 affected by the image size, so if the image size changes the algorithm is still supposed to
 well.
-
----
-
 
 ### Shortcomings
 
