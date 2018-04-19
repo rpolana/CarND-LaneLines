@@ -12,6 +12,8 @@ When we drive, we use our eyes to decide where to go.  The lines on the road tha
 ***
 In this project, I use the tools we learned about in the lesson to identify lane lines on the road.  I developed a pipeline to find lane lines in an image, testing it on a series of individual images. Later the same pipeline is applied to video streams (processing frames as a series of images), while updating line parameters (slope and mid point of line) using moving averages to smoothen the lane lines in video.
 
+All the code is in the P1.ipynb notebook and is also exported to a script file P1.py to run or debug easily. The main algorithm steps are in hough_lines method, which is called by find_lanes_pipeline method. The main parameters to be tuned are in the find_lanes_pipeline method.  
+
 ### Algorithm
 
 The pipeline for finding lane lines involves the following steps:
