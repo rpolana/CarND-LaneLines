@@ -36,15 +36,20 @@ The pipeline for finding lane lines involves the following steps:
         3. _ Use the above two (slope and point on line) to extrapolate the line to a single lane line with end points corresponding to two fixed y coordinates: one slightly below center of image and second at bottom of image _
     4. Draw the lane lines on original image
 
-### Strengths of the algorithm 
+### Results
+
+The directory test_videos_output contains the results of the algorithm, with detected lanes overlaid on image frames of the videos.
+
 * Because the dominant slope is found after eliminating
 lines with slopes outside reasonable thresholds, it appears to detect lanes very reliably.
 * I have also used the image size as part of parameters wherever I believe the parameters are
 affected by the image size, so if the image size changes the algorithm is still supposed to
 well.
 * Due to moving average updates to the estimated lane parameters, in videos also the algorithm 
-detects lanes that are stable and responsive to fast turns.  See the image below from the lane finding result of 
-the challenge video.
+detects lanes that are stable under changes in shading / lighting of road, and responsive to fast turns.  
+Below is one of the image frame from the lane finding result of the challenge video, which is particularly
+difficult for any algorithm without moving average or some other form of smoothing across frames, 
+due to shade from side-by trees and patches of different color on the road.
 
 <img src="test_videos_output/challenge-frame.jpg" width="480" alt="Image frame from result of challenge video" />
 
