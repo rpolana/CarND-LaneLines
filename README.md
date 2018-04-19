@@ -62,15 +62,20 @@ present with slope in the ranges used in the algorithm.
 bright daylight conditions only.
 
 * The algorithm assumes clear lane lines to be present always, which mat not be true:
- * In different regions of world, where the lane lines may be different colors, patterns
+    * In different regions of world, where the lane lines may be different colors, patterns
  or not even existing.  
- * Also under heavy traffic conditions within center of city,or where the traffic rules 
+    * Also under heavy traffic conditions within center of city,or where the traffic rules 
 are not followed, it may be hard to detect lanes due to them being hidden by other 
 vehicles moving closely or moving in and out of lanes frequently 
- * There may be situations where lanes markings may be overlaid or diverted 
+    * There may be situations where lanes markings may be overlaid or diverted 
 under construction, where the lane finding becomes hard also.
 
 ### Possible improvements
+
+This algorithm assumes clear conditions and lane lines present and can be detected easily.  
+I have not attempted to address most shortcomings listed owing to violation of the above assumption.
+
+However, I can still see some improvements in the algorithm as listed below:
 
 * The parameter tuning is done mainly using test images, but it would be better to have a way
 to determine algorithm parameters over large set of training images.
