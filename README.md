@@ -14,6 +14,8 @@ In this project, I use the tools we learned about in the lesson to identify lane
 
 All the code is in the P1.ipynb notebook and is also exported to a script file P1.py to run or debug easily. The main algorithm steps are in hough_lines method, which is called by find_lanes_pipeline method. The main parameters to be tuned are in the find_lanes_pipeline method.  
 
+In the algorithm description below, steps where I have incorporated my changes are listed in _italics_.
+
 ### Algorithm
 
 The pipeline for finding lane lines involves the following steps:
@@ -25,23 +27,26 @@ The pipeline for finding lane lines involves the following steps:
 2. Find one laneline with positive slope and one laneline with negative slope:
     1. Find line segments using Hough transform
     2. For each line segment:
-        1. Calculate slope, and x coordinate corresponding to a fixed y coordinate 3/4 down from top  of image
-        2. If slope is outside certain thresholds, eliminate corresponding line segment from consideration
-        3. Classify line segments into slope positive or slope negative
+        1. _ Calculate slope, and x coordinate corresponding to a fixed y coordinate 3/4 down from top  of image _
+        2. _ If slope is outside certain thresholds, eliminate corresponding line segment from consideration _
+        3. _ Classify line segments into slope positive or slope negative _
     3. For positive and negative slopes:
-        1. Find average of slopes
-        2. Find average of x coordinates corresponding to the fixed y coordinate 3/4 down from top of image
-        3. Use the above two (slope and point on line) to extrapolate the line to a single lane line with end points corresponding to two fixed y coordinates: one slightly below center of image and second at bottom of image
+        1. _ Find average of slopes _
+        2. _ Find average of x coordinates corresponding to the fixed y coordinate 3/4 down from top of image _
+        3. _ Use the above two (slope and point on line) to extrapolate the line to a single lane line with end points corresponding to two fixed y coordinates: one slightly below center of image and second at bottom of image _
     4. Draw the lane lines on original image
 
 ### Strengths of the algorithm 
 * Because the dominant slope is found after eliminating
 lines with slopes outside reasonable thresholds, it appears to detect lanes very reliably.
-* Due to moving average updates to the estimated lane parameters, in videos also the algorithm 
-detects lanes that are stable and responsive to fast turns.
 * I have also used the image size as part of parameters wherever I believe the parameters are
 affected by the image size, so if the image size changes the algorithm is still supposed to
 well.
+* Due to moving average updates to the estimated lane parameters, in videos also the algorithm 
+detects lanes that are stable and responsive to fast turns.  See the image below from the lane finding result of 
+the challenge video.
+
+<img src="test_videos_output/challenge-frame.jpg" width="480" alt="Image frame from result of challenge video" />
 
 ### Shortcomings
 
